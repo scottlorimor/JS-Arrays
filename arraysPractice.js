@@ -151,6 +151,20 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 
   //Code Here
 
+function removeItem (groceryList, foundItem) {
+  for (i=0; i<groceryList.length; i++) {
+    if (foundItem === groceryList[i]) {
+      groceryList.splice(groceryList[i],1);
+    }
+  }
+  return groceryList;
+}
+
+function addItem (groceryList, addItem) {
+  groceryList.push(addItem);
+  return groceryList;
+}
+
 //removeItem(myGroceryList, 'chips') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 
@@ -163,7 +177,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
 //Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 
   //Code Here
-
+function maker () {
+  var numArray = [];
+  for (i=1; i<=215; i++) {
+    numArray.push(i)
+  }
+  return numArray;
+}
 
 
 //Next Problem
@@ -174,7 +194,17 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
 //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 
   //Code Here
-
+function addTen (array) {
+  for (i=0; i<array.length;i++) {
+    if (typeof(array[i]) === 'string') {
+      array[i] = (parseInt(array[i],10) + 10).toString();
+    }
+    else {
+      array[i] += 10;
+    }
+  }
+  return array;
+}
 
 
 //Next Problem
@@ -195,7 +225,12 @@ for(var i = 0; i < num2; i++){
 //Write a function called 'longer' that is given arr1 and arr2 as it's only arguments. Return the array which is longest.
 
   //Code Here
-
+  function longer (array1, array2) {
+    var len1 = array1.length;
+    var len2 = array2.length;
+    if (len1 > len2) {return "array one's length: "+len1}
+    else {return "array two's length: "+len2}
+  }
 
 /*As a continuation of the previous problem, write another function called 'both'.
   Your 'both' function will be given two arguments, arr1 and arr2 (from the previous example)
@@ -203,7 +238,16 @@ for(var i = 0; i < num2; i++){
 */
 
   //Code Here
-  
+  function both (array1,array2) {
+    var newArray = [];
+    for (i=0; i<array1.length; i++) {
+      newArray.push(i);
+      for (i=0; i<array2.length; i++) {
+        newArray.push(i);
+      }
+    }
+    return newArray;
+  }
   
   
 
@@ -243,13 +287,25 @@ array with those four objects. After that console.log the length of the Array an
 sure that it's equal to 4. */
 
   //Code Here
+  devMountainEmployees.push(tyler,cahlan,ryan,colt);
+  console.log(devMountainEmployees.length);
+  
 
 /*Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
 Loop through your devMountainEmployees until you find cahlan, then remove him from the array.*/
 
   //Code Here
+  // for (i=0; i<devMountainEmployees.length; i++) {
+  //   if (devMountainEmployees[i]['name'] === 'Cahlan') {
+  //     devMountainEmployees = devMountainEmployees.splice(devMountainEmployees[i],1);
+  //   }
+  // }
 
+  var devMountainCurrent = devMountainEmployees.filter(function(element) {
+    return element.name !== "Cahlan";
+});
 
+console.log(devMountainCurrent);
 
 
 //NEXT PROBLEM
@@ -290,6 +346,7 @@ of Data is to have an Array full of objects. */
 //Create an empty array called users.
 
   //Code Here
+  var users = [];
 
 /*Now add three user objects to your users array. Each user object should contain the
 following properties. name, email, password, username.*/
@@ -303,6 +360,20 @@ var user1 = {
 };
 
 //Your Code Here
+var user2 = {
+    name: 'Don Rickles',
+    email: 'funny_man@gmail.com',
+    password: 'hahah',
+    username: 'letslaugh'
+};
+var user3 = {
+    name: 'Scott Lorimor',
+    email: 'oldmanriver1@gmail.com',
+    password: 'iLov',
+    username: 'cantspell'
+};
+
+users.push(user1,user2,user3);
 
 /*Now you have a very common data structure. Twitter is a good use case.
 It's easy to imagine that your followers list on Twitter is an Array full or objects
@@ -313,6 +384,9 @@ objects until you find Tyler's account (use tylermcginnis33@gmail.com to find hi
 Once you find the particular index he's located in, delete him from the array.*/
 
   //Code Here
-
+  emailAdd = 'tylermcginnis33@gmail.com';
+  currentUsers = users.filter(function(element) {
+    return element.email !== emailAdd;
+  });
 //The activity we just did is very much how data works in 'the real world'.
 
